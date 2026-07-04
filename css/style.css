@@ -6,7 +6,7 @@
 /* === VARIABLES === */
 :root {
 
-  --color-bg: #f6faf2;
+  --color-bg: #ebf3ed;
   --color-surface: #e8ede4;
   --color-accent: #4a7c59;
   --color-text: #2c2c2a;
@@ -140,6 +140,43 @@ body {
   font-weight: 500;
 }
 
+
+
+
+
+/* ================================
+   HERO
+================================ */
+
+#hero {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding-left: 10rem;
+}
+
+.hero-image {
+  flex: 0 0 35%;
+  overflow: hidden;
+  align-self: flex-start;
+  margin-left: 10rem;
+}
+
+.hero-image img {
+  width: 70%;
+  height: auto;
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  top: 30rem;
+  left: 45%;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
 
 
