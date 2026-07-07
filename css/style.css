@@ -6,12 +6,12 @@
 /* === VARIABLES === */
 :root {
 
-  --color-bg: #f3f2eb;
-  --color-bg-hero-img: #f3f2eb;
-  --color-bg-hero-img-end: #f3f2eb;
-  --color-surface: #e8ede4;
+  --color-bg: #fffffb;
+  --color-hero-bg: #ffe59e;
+  --color-surface: #cbf7a7;
   --color-accent: #4a7c59;
   --color-text: #2c2c2a;
+  --color-text-hero: #ffffff;
   --color-text-secondary: #5f5e5a;
 
   --font-title: 'Playfair Display', serif;
@@ -40,7 +40,7 @@
 /* === HTML === */
 html {
   
-  scroll-padding-top: 176px;
+  scroll-padding-top: 118px;
 
 }
 
@@ -52,7 +52,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 1.6;  
-  padding-top: 176px;
+  padding-top: 118px;
 
 }
 
@@ -150,27 +150,36 @@ body {
    HERO
 ================================ */
 
-#hero {
+#hero {  
   display: flex;
   align-items: center;
   min-height: 100vh;
   padding-left: 5rem;
-  padding-right: 5rem;
+  padding-right: 5rem;  
+  background-image: url('/assets/images/bg-hero.png');
+  background-size: cover;
+  background-position: center;
+  }
+
+#particles-js {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
 .hero-image {
   flex: 0 0 40%;
   overflow: hidden;
   align-self: flex-start;
-  
-  background: linear-gradient(to right, var(--color-bg-hero-img), var(--color-bg-hero-img-end));
+  margin-top: 5rem;
+  z-index: 1;
 }
 
 .hero-image img {
   width: 60%;
   height: auto;
   display: block;
-  margin-left: 10rem;
+  margin-left: 20rem;
 }
 
 .hero-content {
@@ -181,6 +190,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  color: var(--color-text-hero);
+}
+
+.hero-links a {
+  color: var(--color-text-hero);
+  text-decoration: none;
+}
+
+.hero-greeting {
+  font-size: 1.5rem;
+  font-family: var(--font-title);
+  color: var(--color-text-hero);
 }
 
 
