@@ -150,53 +150,37 @@ body {
    HERO
 ================================ */
 
-#hero {  
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  padding-left: 5rem;
-  padding-right: 5rem;  
+#hero {    
+  min-height: 100svh;  
   background-image: url('/assets/images/bg-hero.png');
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  }
+  position: relative;
+  display:flex;
+}
 
 #particles-js {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  
 }
 
 .hero-image {
-  flex: 0 0 40%;
-  overflow: hidden;
-  align-self: flex-start;
-  margin-top: 5rem;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 55%;
+  pointer-events: none;
 }
 
 .hero-image img {
-  width: 60%;
+  width: 45%;
   height: auto;
-  display: block;
-  margin-left: 20rem;
-}
-
-.hero-content {  
-  position: absolute;
-  top: 25rem;
-  left: 45%;
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  color: var(--color-text-hero);
-  z-index: 1;
-}
-
-.hero-links a {
-  color: var(--color-text-hero);
-  text-decoration: none;
+  position: relative;
+  top: -6.25rem;
+  left: 2.5rem;
 }
 
 .hero-greeting {
@@ -205,14 +189,20 @@ body {
   color: var(--color-text-hero);
 }
 
+.hero-content {  
+  z-index: 1;
+  color: var(--color-text-hero);
+  position: relative;
+  top: 20rem;
+  right: 10rem;
+  pointer-events: none;
+}
 
-
-
-
-
-
-
-
+.hero-links a {
+  pointer-events: auto;
+  color: var(--color-text-hero);
+  text-decoration: none;
+}
 
 
 
