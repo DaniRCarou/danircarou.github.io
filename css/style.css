@@ -6,10 +6,9 @@
 /* === VARIABLES === */
 :root {
 
-  --color-bg: #fffffb;
-  --color-hero-bg: #ffe59e;
-  --color-surface: #cbf7a7;
-  --color-accent: #4a7c59;
+  --color-bg: #f5f6f3;
+  --color-surface: #4fb000;
+  --color-accent: #32824a;
   --color-text: #2c2c2a;
   --color-text-hero: #ffffff;
   --color-text-secondary: #5f5e5a;
@@ -152,7 +151,7 @@ body {
 
 #hero {    
   min-height: 100svh;  
-  background-image: url('/assets/images/bg-hero.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/bg-hero.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -184,7 +183,7 @@ body {
 }
 
 .hero-greeting {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-family: var(--font-title);
   color: var(--color-text-hero);
 }
