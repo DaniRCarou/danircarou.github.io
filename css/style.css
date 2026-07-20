@@ -9,6 +9,7 @@
   --color-bg: #f5f6f3;
   --color-surface: #4fb000;
   --color-accent: #32824a;
+  --color-first-letter: #44941f;
   --color-text: #2c2c2a;
   --color-text-hero: #ffffff;
   --color-text-secondary: #5f5e5a;
@@ -207,7 +208,105 @@ body {
 
 
 
+/* ================================
+   ABOUT
+================================ */
 
+#about {
+  
+ min-height: 100svh;
+ padding-top: 3rem;
+ background-image: url('/assets/images/bg-about.png');
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center;
+ 
+}
+
+.about-badge {
+
+  position: absolute;
+  display: block;
+  width: fit-content;
+  margin: 0rem 3rem;
+  
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: var(--color-text-hero);
+  opacity: 0;
+  transition: opacity 5s ease;
+
+}
+
+/* a diferencia de .about-line, .about-badge, etc. (que apuntan a elementos completos), esto apunta solo al primer carácter del texto dentro de .about-text — en tu caso, la "W" de "With". */
+.about-text::first-letter {
+  font-size: 4rem; /* esta es la clave del efecto "letra capital" real: hace que la letra grande "flote" a la izquierda, y el resto del texto fluya alrededor de ella en vez de empujarla como un bloque normal — como ves en libros y revistas, donde el resto del párrafo rodea a la letra grande. */
+  font-family: var(--font-title);
+  color: var(--color-first-letter);
+  float: left;
+  line-height: 0.8;/*line-height: 0.8 — ajusta la altura de línea de esa letra sola, para que no deje demasiado hueco vacío por encima o por debajo, ya que su tamaño es mucho mayor que el resto del texto.*/
+  margin-right: 0.5rem;
+}
+
+.about-line {
+
+  color: var(--color-text-hero);
+  opacity: 0; /* opacity: 0; en vez de display: none; display: none oculta el elemento del todo pero no permite transiciones (aparece/desaparece de golpe, sin animación). opacity sigue ocupando su espacio en el layout, pero al ser una propiedad animable, combinada con transition permite un desvanecimiento suave en vez de un cambio brusco. */
+  transition: opacity 4s ease;  /* Sin transition, un cambio de opacity (0 -> 1) se aplica de golpe, en un solo fotograma. Con transition, el navegador reparte ese cambio a lo largo de 1 segundo, pasando por los valores intermedios, creando un desvanecimiento suave en vez de un salto brusco. Mismo mecanismo que .nav-links a:hover, pero animando opacity en vez de color. */
+
+}
+
+.about-content {
+  max-width: 43.75rem;
+  margin: 0 auto;
+}
+
+.about-images {
+
+  display: flex; 
+  gap: 10rem; 
+  justify-content: center;  /* justify-content: center centra el conjunto de elementos (las dos imágenes + el gap entre ellas) dentro del ancho de .about-images. Sin esto, Flexbox agrupa los elementos pegados al inicio (izquierda) por defecto — con center, cada imagen se desplaza la misma distancia desde el centro hacia su lado */
+  margin-top: 5rem;
+  position: relative; /* para que 'position: absolute' en '.about-img-final' funcione correctamente y se posicione respecto a #about (no respecto a toda la página), #about necesita ser el "ancla" */
+
+}
+
+/* opacity: 0; en .about-img / .about-img-final A diferencia de display (donde cada elemento se controla de forma independiente), opacity NO funciona en cascada: si un contenedor padre tiene opacity:0, TODO su contenido queda invisible sin excepción, sin importar la opacity que tengan los hijos por separado. Por eso ocultamos cada imagen individualmente (por clase) en vez de ocultar .about-images (el div contenedor) — así cada una puede controlarse por su propio id desde JavaScript, sin que un padre oculto bloquee a los hijos. */
+.about-img {
+
+  width: 60%;
+  height: auto;
+  
+  flex-shrink: 0; /* Por defecto, los hijos de un flex container tienen flex-shrink: 1, es decir, el navegador los encoge automáticamente si no caben todos en el ancho disponible. Con dos imágenes al 55% de width cada una (110% en total, más del 100% del contenedor), el navegador las comprime solo para que quepan — por eso subir el width por encima de cierto punto no las hacía más grandes, el flex-shrink compensaba el exceso. flex-shrink: 0 desactiva ese encogimiento automático */
+
+  opacity: 0;
+  transition: opacity 4s ease, transform 3s ease;/* transition: opacity 4s ease, transform 3s ease; Anima dos propiedades a la vez, cada una con su propia duración: opacity tarda 4s en cambiar (el desvanecimiento), transform tarda 3s (el desplazamiento hacia el centro). Al empezar ambas en el  mismo instante pero con distinta duración, el movimiento termina antes que el desvanecimiento — dando esa sensación de que primero se juntan y luego, más despacio, una se disuelve. */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+  border-radius: 0.2rem;
+
+}
+
+.about-img-final{
+  
+  position: absolute; /* Para poder colocarse en el centro, independiente del flujo de .about-images. */
+  
+  /* Para centrar un elemento con position: absolute sin estirarlo, se usa una técnica en dos pasos: Paso 1 — mover el punto de referencia del elemento al centro exacto del contenedor: */
+  top: 50%;
+  left: 50%;  
+
+  /* Paso 2 — corregir ese desplazamiento con transform: translate(), que mueve el elemento un porcentaje de su propio tamaño (no del contenedor): */
+  transform: translate(-50%, -50%);
+
+  width: 80%;
+  height: auto;  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+
+  opacity: 0;
+  transition: opacity 5s ease;
+  border-radius: 0.2rem;
+  filter: brightness(1.7);
+
+}
 
 
 
