@@ -106,7 +106,6 @@ particlesJS('particles-js', {
 
 // === ELEMENTOS DE ABOUT ===
 
-const elementoTitulo = document.getElementById("about-line-title");
 const elementoLinea1 = document.getElementById("about-line-1");
 const elementoImagen1 = document.getElementById("about-img-1");
 const elementoLinea2 = document.getElementById("about-line-2");
@@ -135,14 +134,11 @@ function iniciarSecuenciaAbout() {
   // Cancela cualquier tanda de setTimeout de una entrada anterior, para que no se solape con esta nueva y descontrole el orden
   limpiarTimeoutsAbout();
 
-  // Elemento donde se muestra el titulo 1
-  elementoTitulo.style.opacity = 1;
-
   // Elemento donde se muestra el texto 1
   elementoLinea1.style.opacity = 1;
 
   // Elemento donde se muestra la imagen 1
-  elementoImagen1.style.opacity = 0.8;
+  elementoImagen1.style.opacity = 1;
 
   // Guardamos en el array y se muestra el texto 2
   timeoutsAbout.push(setTimeout(() => {
@@ -151,7 +147,7 @@ function iniciarSecuenciaAbout() {
 
   // Guardamos en el array y se muestra la imagen 2
   timeoutsAbout.push(setTimeout(() => {
-    elementoImagen2.style.opacity = 0.8;
+    elementoImagen2.style.opacity = 1;
   }, 3500));
 
   // Guardamos en el array y se muestra el texto 3
@@ -169,7 +165,7 @@ function iniciarSecuenciaAbout() {
 
   // Guardamos en el array y se muestra la imagen 3
   timeoutsAbout.push(setTimeout(() => {
-    elementoImagen3.style.opacity = 0.85;
+    elementoImagen3.style.opacity = 1;
   }, 8200));
 
 }
@@ -182,9 +178,6 @@ function resetearAbout() {
   // Cancela también aquí cualquier setTimeout pendiente, por si
   // se sale de la sección antes de que termine de aparecer todo
   limpiarTimeoutsAbout();
-
-  elementoTitulo.style.transition = "none";
-  elementoTitulo.style.opacity = 0;
 
   // transition: "none" desactiva la animación un instante, para que
   // el cambio a opacity:0 sea instantáneo y no se vea un desvanecimiento
@@ -214,7 +207,6 @@ function resetearAbout() {
   // transition: "" (cadena vacía) no significa "anima todo" — significa "borra el estilo que había puesto directamente en este elemento con JavaScript", dejando que el elemento vuelva a mirar su CSS normal (.about-line { transition: opacity 4s ease; }) para decidir cómo comportarse.
   setTimeout(() => {
 
-    elementoTitulo.style.transition = "";
     elementoLinea1.style.transition = "";
     elementoImagen1.style.transition = "";
     elementoLinea2.style.transition = "";
